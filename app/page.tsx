@@ -35,7 +35,8 @@ export default function Home() {
           <CardHeader>
             <CardTitle className="text-xl font-semibold">Workshop Checklist</CardTitle>
             <CardDescription>
-              Follow these steps after cloning the repo to get your local environment ready.
+              Follow these steps after cloning the repo to get your local environment
+              ready.
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-6 lg:grid-cols-2">
@@ -43,18 +44,23 @@ export default function Home() {
               <li>
                 Populate <span className="font-mono">NEXT_PUBLIC_VAPI_PUBLIC_KEY</span>{' '}
                 and <span className="font-mono">NEXT_PUBLIC_VAPI_ASSISTANT_ID</span> in{' '}
-                <span className="font-mono">.env.local</span> with the credentials from your Vapi dashboard. If you do not have an assistant yet, create one in Vapi Studio first.
+                <span className="font-mono">.env.local</span> with the credentials from
+                your Vapi dashboard. If you do not have an assistant yet, create one in
+                Vapi Studio first.
               </li>
               <li>
                 Run <span className="font-mono">bun dev</span> and visit{' '}
-                <span className="font-mono">http://localhost:3000</span> to open the call console.
+                <span className="font-mono">http://localhost:3000</span> to open the call
+                console.
               </li>
               <li>
-                Start a call, speak naturally, and watch the transcript stream in while you test latency and interruption handling.
+                Start a call, speak naturally, and watch the transcript stream in while
+                you test latency and interruption handling.
               </li>
               <li>
                 Import the reusable{' '}
-                <span className="font-mono">&lt;VapiButton /&gt;</span> component into your own pages to extend the demo.
+                <span className="font-mono">&lt;VapiButton /&gt;</span> component into
+                your own pages to extend the demo.
               </li>
             </ol>
             <div className="space-y-4 text-sm text-muted-foreground">

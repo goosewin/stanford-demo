@@ -41,10 +41,7 @@ export function VapiExample() {
   );
 
   const volumePercent = useMemo(
-    () =>
-      Math.round(
-        Math.max(0, Math.min(1, controller.volumeLevel)) * 100,
-      ),
+    () => Math.round(Math.max(0, Math.min(1, controller.volumeLevel)) * 100),
     [controller.volumeLevel],
   );
 
@@ -89,9 +86,7 @@ export function VapiExample() {
           <div className="flex min-w-[220px] flex-1 flex-col gap-2 sm:max-w-xs">
             <div className="flex items-center justify-between text-xs uppercase tracking-wide text-muted-foreground">
               <span>Assistant Volume</span>
-              <span className="font-mono text-muted-foreground/80">
-                {volumePercent}%
-              </span>
+              <span className="font-mono text-muted-foreground/80">{volumePercent}%</span>
             </div>
             <Slider
               value={[volumePercent]}
@@ -231,14 +226,13 @@ export function VapiExample() {
             <p>
               Add <span className="font-mono">NEXT_PUBLIC_VAPI_PUBLIC_KEY</span> and
               <span className="font-mono"> NEXT_PUBLIC_VAPI_ASSISTANT_ID</span> to your
-              <span className="font-mono"> .env.local</span> file using values from the Vapi dashboard, then refresh this page.
+              <span className="font-mono"> .env.local</span> file using values from the
+              Vapi dashboard, then refresh this page.
             </p>
           ) : controller.error ? (
             <p className="text-destructive">{controller.error}</p>
           ) : (
-            <p>
-              Use the controls above to start and end a call.
-            </p>
+            <p>Use the controls above to start and end a call.</p>
           )}
         </div>
       </CardFooter>
