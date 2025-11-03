@@ -1,65 +1,82 @@
-import Image from "next/image";
+import { VapiExample } from '@/app/components/VapiExample';
+import { Badge } from '@/components/ui/badge';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="flex min-h-screen flex-col bg-background px-6 py-16 sm:px-10 lg:px-16">
+      <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-14">
+        <header className="space-y-6">
+          <Badge
+            variant="outline"
+            className="w-fit border-border/60 px-3 py-1 text-xs uppercase tracking-[0.32em]"
+          >
+            Stanford Voice AI Workshop
+          </Badge>
+          <h1 className="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+            Hands-on Voice AI console for the workshop
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="max-w-2xl text-lg text-muted-foreground">
+            Clone the repo, connect your Vapi keys, and use the console below to run
+            real-time calls powered by the <span className="font-mono">useVapi</span> hook
+            and shadcn/ui components.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        </header>
+
+        <VapiExample />
+
+        <Card className="border border-border/60 bg-background/80">
+          <CardHeader>
+            <CardTitle className="text-xl font-semibold">Workshop Checklist</CardTitle>
+            <CardDescription>
+              Follow these steps after cloning the repo to get your local environment ready.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="grid gap-6 lg:grid-cols-2">
+            <ol className="list-decimal space-y-3 pl-5 text-sm text-muted-foreground">
+              <li>
+                Populate <span className="font-mono">NEXT_PUBLIC_VAPI_PUBLIC_KEY</span>{' '}
+                and <span className="font-mono">NEXT_PUBLIC_VAPI_ASSISTANT_ID</span> in{' '}
+                <span className="font-mono">.env.local</span> with the credentials from your Vapi dashboard. If you do not have an assistant yet, create one in Vapi Studio first.
+              </li>
+              <li>
+                Run <span className="font-mono">bun dev</span> and visit{' '}
+                <span className="font-mono">http://localhost:3000</span> to open the call console.
+              </li>
+              <li>
+                Start a call, speak naturally, and watch the transcript stream in while you test latency and interruption handling.
+              </li>
+              <li>
+                Import the reusable{' '}
+                <span className="font-mono">&lt;VapiButton /&gt;</span> component into your own pages to extend the demo.
+              </li>
+            </ol>
+            <div className="space-y-4 text-sm text-muted-foreground">
+              <div>
+                <h3 className="mb-2 font-semibold text-foreground">Core files</h3>
+                <ul className="space-y-1 font-mono">
+                  <li>app/hooks/useVapi.tsx</li>
+                  <li>app/components/VapiExample.tsx</li>
+                  <li>app/components/VapiButton.tsx</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="mb-2 font-semibold text-foreground">UI stack</h3>
+                <p>
+                  Built with the latest shadcn/ui registry, Tailwind 4 tokens, and the
+                  Geist type family for a focused, minimal interface.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </main>
   );
 }
